@@ -15,6 +15,5 @@ object FileSystem extends App {
     state.show
     val input = scanner.nextLine()
     state = Command.from(input)(state) // state full program
-
   }
 }

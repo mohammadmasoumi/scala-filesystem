@@ -1,5 +1,5 @@
 package com.mohammadmasoumi.scala.files
 
-abstract class DirEntry {
+abstract class DirEntry(val parentPath: String, val name: String) {
 
 }

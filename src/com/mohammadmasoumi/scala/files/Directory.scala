@@ -24,7 +24,9 @@ class Directory(override val parentPath: String, override val name: String, val 
   // /a/b/c/d => List["a","b","c","d"]
     path.substring(1).split(Directory.SEPARATOR).toList
 
-  def findDescendant(path: List[String]): Directory = ???
+  def findDescendant(path: List[String]): Directory =
+    if (path.isEmpty) this
+    else findEntry(path.head).asDirectory.findDescendant(path.tail)
 
   def addEntry(newEntry: DirEntry): Directory = ???
 

@@ -13,3 +13,10 @@ class File(override val parentPath: String, override val name: String, contents:
 
   override def asFile: File = this
 }
+
+object File {
+
+  def empty(parentPath: String, name: String): File =
+    new File(parentPath, name, "")
+
+}

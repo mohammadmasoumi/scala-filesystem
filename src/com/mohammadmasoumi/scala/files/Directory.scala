@@ -17,6 +17,7 @@ class Directory(override val parentPath: String, override val name: String, val 
       else if (contentList.head.name.equals(name)) contentList.head
       else findEntryHelper(name, contentList.tail)
     }
+
     findEntryHelper(entryName, contents)
   }
 
@@ -36,7 +37,7 @@ class Directory(override val parentPath: String, override val name: String, val 
 
   override def asDirectory: Directory = this
 
-  override def getType: String = this.getClass.toString
+  override def getType: String = "Directory"
 
   override def asFile: File = throw new FilesystemException("A directory cannot be converted to a file!")
 }

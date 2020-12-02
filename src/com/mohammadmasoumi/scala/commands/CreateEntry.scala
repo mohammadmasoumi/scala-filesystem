@@ -3,7 +3,7 @@ package com.mohammadmasoumi.scala.commands
 import com.mohammadmasoumi.scala.files.{DirEntry, Directory}
 import com.mohammadmasoumi.scala.filesystem.State
 
-class CreateEntry(entryName: String) extends Command {
+abstract class CreateEntry(entryName: String) extends Command {
 
   override def apply(state: State): State = {
     val wd = state.wd
@@ -37,7 +37,7 @@ class CreateEntry(entryName: String) extends Command {
     val allDirsInPath = wd.getAllFoldersInPath
 
     // 2. create new directory entry in the wd
-    val newEntry: DirEntry = CreateSpecificEntry(state, name)
+    val newEntry: DirEntry = createSpecificEntry(state, name)
 
     // 3. update the whole directory structure starting from the root
     // the directory structure is IMMUTABLE
@@ -49,6 +49,6 @@ class CreateEntry(entryName: String) extends Command {
     State(newRoot, newWd)
   }
 
-  abstract def CreateSpecificEntry(state: State, entryName: String): DirEntry
+  def createSpecificEntry(state: State, entryName: String): DirEntry
 
 }

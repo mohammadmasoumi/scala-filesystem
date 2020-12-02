@@ -1,6 +1,6 @@
 package com.mohammadmasoumi.scala.commands
 
-import com.mohammadmasoumi.scala.files.Directory
+import com.mohammadmasoumi.scala.files.{DirEntry, Directory}
 import com.mohammadmasoumi.scala.filesystem.State
 
 class CreateEntry(entryName: String) extends Command {
@@ -22,7 +22,7 @@ class CreateEntry(entryName: String) extends Command {
 
   private def doMkdir(state: State, name: String): State = {
     // try to name variables as general as possible
-    def updateStructure(currentDirectory: Directory, path: List[String], newEntry: Directory): Directory = {
+    def updateStructure(currentDirectory: Directory, path: List[String], newEntry: DirEntry): Directory = {
       if (path.isEmpty) currentDirectory.addEntry(newEntry)
       else {
         // currentDirectory
@@ -37,16 +37,18 @@ class CreateEntry(entryName: String) extends Command {
     val allDirsInPath = wd.getAllFoldersInPath
 
     // 2. create new directory entry in the wd
-    val newDir = Directory.empty(wd.path, name)
+    val newEntry: DirEntry = CreateSpecificEntry(state, name)
 
     // 3. update the whole directory structure starting from the root
     // the directory structure is IMMUTABLE
-    val newRoot = updateStructure(state.root, allDirsInPath, newDir)
+    val newRoot = updateStructure(state.root, allDirsInPath, newEntry)
 
     // 4. find new working directory INSTANCE given wd's full path, in the NEW directory structure.
     val newWd = newRoot.findDescendant(allDirsInPath)
 
     State(newRoot, newWd)
   }
+
+  abstract def CreateSpecificEntry(state: State, entryName: String): DirEntry
 
 }

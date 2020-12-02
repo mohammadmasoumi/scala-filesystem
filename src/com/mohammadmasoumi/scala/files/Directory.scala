@@ -4,7 +4,8 @@ import scala.annotation.tailrec
 
 class Directory(override val parentPath: String, override val name: String, val contents: List[DirEntry])
   extends DirEntry(parentPath, name) {
-  def replaceEntry(entryName: String, newEntry: DirEntry): Directory = ???
+  def replaceEntry(entryName: String, newEntry: DirEntry): Directory =
+    new Directory(parentPath, name, contents.filter(e => !e.name.equals(entryName)))
 
   def findEntry(entryName: String): DirEntry = {
     @tailrec

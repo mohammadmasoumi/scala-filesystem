@@ -10,7 +10,16 @@ class Mkdir(name: String) extends Command {
 
   def doMkdir(state: State, name: String): State = {
     // try to name variables as general as possible
-    def updateStructure(currentDirectory: Directory, path: List[String], newEntry: Directory): Directory = ???
+    def updateStructure(currentDirectory: Directory, path: List[String], newEntry: Directory): Directory = {
+      if (path.isEmpty) currentDirectory.addEntry(newEntry)
+      else {
+        // currentDirectory
+        val oldEntry = currentDirectory.findEntry(path.head)
+        currentDirectory.replaceEntry(oldEntry, updateStructure(oldEntry, path.tail, newEntry))
+
+      }
+    }
+
 
     val wd = state.wd
 

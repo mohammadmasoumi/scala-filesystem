@@ -1,12 +1,12 @@
 package com.mohammadmasoumi.scala.files
 
+import com.mohammadmasoumi.scala.filesystem.FilesystemException
+
 import scala.annotation.tailrec
 
 class Directory(override val parentPath: String, override val name: String, val contents: List[DirEntry])
   extends DirEntry(parentPath, name) {
 
-  def hasEntry(name: String): Boolean =
-    findEntry(name) != null
 
   def addEntry(newEntry: DirEntry): Directory =
     new Directory(parentPath, name, contents :+ newEntry)
@@ -22,21 +22,26 @@ class Directory(override val parentPath: String, override val name: String, val 
     findEntryHelper(entryName, contents)
   }
 
+  def hasEntry(name: String): Boolean =
+    findEntry(name) != null
+
   def replaceEntry(entryName: String, newEntry: DirEntry): Directory =
     new Directory(parentPath, name, contents.filter(e => !e.name.equals(entryName)) :+ newEntry)
-
-  def getAllFoldersInPath: List[String] =
-  // /a/b/c/d => List["a","b","c","d"]
-    path.substring(1).split(Directory.SEPARATOR).toList.filter(!_.isEmpty)
 
   def findDescendant(path: List[String]): Directory =
     if (path.isEmpty) this
     else findEntry(path.head).asDirectory.findDescendant(path.tail)
 
+  def getAllFoldersInPath: List[String] =
+  // /a/b/c/d => List["a","b","c","d"]
+    path.substring(1).split(Directory.SEPARATOR).toList.filter(!_.isEmpty)
+
 
   override def asDirectory: Directory = this
 
-  override def getType: String = "Directory"
+  override def getType: String = this.getClass.toString
+
+  override def asFile: File = throw new FilesystemException("A directory cannot be converted to a file!")
 }
 
 

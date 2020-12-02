@@ -15,7 +15,10 @@ class Directory(override val parentPath: String, override val name: String, val 
   def findDescendant(path: List[String]): Directory = ???
 
   def addEntry(newEntry: DirEntry): Directory = ???
+
+  override def asDirectory: Directory = this
 }
+
 
 object Directory {
   val SEPARATOR = "/"

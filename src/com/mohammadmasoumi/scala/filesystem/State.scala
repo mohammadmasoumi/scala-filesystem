@@ -14,7 +14,6 @@ class State(val root: Directory, val wd: Directory, val output: String) {
 
   def setMessage(message: String): State =
     State(root, wd, message) // call apply method
-
 }
 
 object State {

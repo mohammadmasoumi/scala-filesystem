@@ -14,6 +14,7 @@ trait Command {
 object Command {
 
   val MKDIR = "mkdir"
+  val LS = "ls"
 
   def emptyCommand: Command = new Command { // anonymous class
     override def apply(state: State): State = state
@@ -30,10 +31,12 @@ object Command {
     val tokens = input.split(" ") // array of string
 
     if (input.isEmpty || tokens.isEmpty) emptyCommand
-    else if (MKDIR.equals(tokens(0))) {
+    else if (MKDIR.equals(tokens(0)))
       if (tokens.length < 2) incompleteCommand("mkdir")
       else new Mkdir(tokens(1))
-    } else new UnknownCommand
+    else if (LS.equals(tokens(0)))
+      new Ls
+    else new UnknownCommand
   }
 
 }

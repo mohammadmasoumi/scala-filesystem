@@ -11,7 +11,7 @@ class Ls extends Command {
     state.setMessage(niceOutput)
   }
 
-  def createNiceOutput(contents: List[DirEntry]): String =
+  private def createNiceOutput(contents: List[DirEntry]): String =
     if (contents.isEmpty) ""
     else {
       val entry = contents.head

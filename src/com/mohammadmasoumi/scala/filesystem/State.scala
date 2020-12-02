@@ -23,5 +23,4 @@ object State {
   def apply(root: Directory, wd: Directory, output: String = "") =
     new State(root, wd, output)
 
-
 }

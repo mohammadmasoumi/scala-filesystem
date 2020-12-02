@@ -5,7 +5,9 @@ class Directory(override val parentPath: String, override val name: String, val 
 
   def hasEntry(name: String): Boolean = ???
 
-  def getAllFoldersInPath: List[String] = ???
+  def getAllFoldersInPath: List[String] =
+  // /a/b/c/d => List["a","b","c","d"]
+    path.substring(1).split(Directory.SEPARATOR).toList
 
   def findDescendant(path: List[String]): Directory = ???
 }

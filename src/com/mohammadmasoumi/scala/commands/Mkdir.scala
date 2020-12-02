@@ -13,7 +13,6 @@ class Mkdir(name: String) extends Command {
     def updateStructure(currentDirectory: Directory, path: List[String], newEntry: Directory): Directory = ???
 
     val wd = state.wd
-    val full_path = wd.path
 
     // 1. all the directories in the full path
     val allDirsInPath = wd.getAllFoldersInPath

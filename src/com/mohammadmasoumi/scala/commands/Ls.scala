@@ -15,7 +15,7 @@ class Ls extends Command {
     if (contents.isEmpty) ""
     else {
       val entry = contents.head
-      entry.name + s"[${entry.getType}]" + createNiceOutput(contents.tail) + "\n"
+      entry.name + s"[${entry.getType}]" + "\n" + createNiceOutput(contents.tail)
     }
 
 }

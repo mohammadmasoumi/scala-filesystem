@@ -6,8 +6,8 @@ class Directory(override val parentPath: String, override val name: String, val 
   extends DirEntry(parentPath, name) {
   def replaceEntry(entryName: String, newEntry: DirEntry): Directory = ???
 
-  @tailrec
-  def findEntry(entryName: String): Directory = {
+  def findEntry(entryName: String): DirEntry = {
+    @tailrec
     def findEntryHelper(name: String, contentList: List[DirEntry]): DirEntry = {
       if (contentList.isEmpty) null
       else if (contentList.head.name.equals(name)) contentList.head

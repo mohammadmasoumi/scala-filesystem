@@ -17,7 +17,8 @@ class Directory(override val parentPath: String, override val name: String, val 
     findEntryHelper(entryName, contents)
   }
 
-  def hasEntry(name: String): Boolean = ???
+  def hasEntry(name: String): Boolean =
+    findEntry(name) != null
 
   def getAllFoldersInPath: List[String] =
   // /a/b/c/d => List["a","b","c","d"]

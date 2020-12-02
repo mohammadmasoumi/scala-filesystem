@@ -15,8 +15,7 @@ class Mkdir(name: String) extends Command {
       else {
         // currentDirectory
         val oldEntry = currentDirectory.findEntry(path.head)
-        currentDirectory.replaceEntry(oldEntry, updateStructure(oldEntry, path.tail, newEntry))
-
+        currentDirectory.replaceEntry(oldEntry.name, updateStructure(oldEntry, path.tail, newEntry))
       }
     }
 

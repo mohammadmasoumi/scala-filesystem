@@ -1,10 +1,21 @@
 package com.mohammadmasoumi.scala.files
 
+import scala.annotation.tailrec
+
 class Directory(override val parentPath: String, override val name: String, val contents: List[DirEntry])
   extends DirEntry(parentPath, name) {
   def replaceEntry(entryName: String, newEntry: DirEntry): Directory = ???
 
-  def findEntry(entryName: String): Directory = ???
+  @tailrec
+  def findEntry(entryName: String): Directory = {
+    def findEntryHelper(name: String, contentList: List[DirEntry]): DirEntry = {
+      if (contentList.isEmpty) null
+      else if (contentList.head.name.equals(name)) contentList.head
+      else findEntryHelper(name, contentList.tail)
+    }
+
+    findEntryHelper(entryName, contents)
+  }
 
   def hasEntry(name: String): Boolean = ???
 

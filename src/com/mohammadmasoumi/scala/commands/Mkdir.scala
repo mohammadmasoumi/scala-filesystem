@@ -19,7 +19,6 @@ class Mkdir(name: String) extends Command {
       }
     }
 
-
     val wd = state.wd
 
     // 1. all the directories in the full path

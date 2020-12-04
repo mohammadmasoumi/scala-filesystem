@@ -52,6 +52,8 @@ class Directory(override val parentPath: String, override val name: String, val 
 object Directory {
   val SEPARATOR = "/"
   val ROOT_PATH = "/"
+  val INVALID_RELATIVE_PATH = "."
+  val VALID_RELATIVE_PATH = ".."
 
   def ROOT: Directory = Directory.empty("", "")
 

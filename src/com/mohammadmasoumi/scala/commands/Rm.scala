@@ -25,9 +25,26 @@ class Rm(name: String) extends Command{
   }
 
   def doRm(state: State, path: String): State = {
-    // 4. find the entry to remove
 
+    def rmHelper(currentDirectory: Directory, path: List[String]): Directory = {
+      if (path.isEmpty) currentDirectory
+      else if (path.tail.isEmpty) currentDirectory.removeEntry(path.head)
+      else {
+        val nextDirectory = currentDirectory.findEntry(path.head)
+        if (nextDirectory.isDirectory) currentDirectory
+        else
+      }
+    }
+
+    // 4. find the entry to remove
+    val tokens = path.substring(1).split(Directory.SEPARATOR).toList
+    val newRoot: Directory = rmHelper(state.root, tokens)
     // 5. update structure like we did for mkdir
+
+    if (newRoot == state.root)
+      state.setMessage(path + ": no such file or directory")
+    else
+      State(newRoot, newRoot.findDescendant(state.wd.path.substring(1)))
   }
 
 }

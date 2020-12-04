@@ -19,6 +19,8 @@ object Command {
   val TOUCH = "touch"
   val CD = "cd"
   val RM = "rm"
+  val CAT = "cat"
+  val ECHO = "echo"
 
   def emptyCommand: Command = new Command { // anonymous class
     override def apply(state: State): State = state

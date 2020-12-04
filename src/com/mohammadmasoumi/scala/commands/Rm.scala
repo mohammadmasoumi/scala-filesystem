@@ -1,12 +1,12 @@
 package com.mohammadmasoumi.scala.commands
+
 import com.mohammadmasoumi.scala.files.Directory
 import com.mohammadmasoumi.scala.filesystem.State
 
-class Rm(name: String) extends Command{
+class Rm(name: String) extends Command {
 
 
   override def apply(state: State): State = {
-
     // 1. get current working dir
     val wd = state.wd
 
@@ -21,7 +21,6 @@ class Rm(name: String) extends Command{
       state.setMessage("Not supported yet!")
     else
       doRm(state, absolutePath)
-
   }
 
   def doRm(state: State, path: String): State = {

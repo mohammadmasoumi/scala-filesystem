@@ -44,12 +44,16 @@ class Cd(dir: String) extends Command {
 
     @tailrec
     def collapseRelativeTokens(path: List[String], result: List[String] = List()): List[String] = {
+      /*
+        /a/b => ["a","b"]
+
+       */
       if (path.isEmpty) result
       else if (Directory.INVALID_RELATIVE_PATH.equals(path.head))
         collapseRelativeTokens(path.tail, result)
       else if (Directory.VALID_RELATIVE_PATH.equals(path.head))
         if (result.isEmpty) null
-        else collapseRelativeTokens(path.tail, result.tail)
+        else collapseRelativeTokens(path.tail, result.init)
       else collapseRelativeTokens(path.tail, result :+ path.head)
     }
 

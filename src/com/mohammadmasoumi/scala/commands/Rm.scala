@@ -32,7 +32,11 @@ class Rm(name: String) extends Command{
       else {
         val nextDirectory = currentDirectory.findEntry(path.head)
         if (nextDirectory.isDirectory) currentDirectory
-        else
+        else {
+          val newNextDirectory = rmHelper(nextDirectory.asDirectory, path.tail)
+          if (newNextDirectory == nextDirectory) currentDirectory
+          else currentDirectory.replaceEntry(path.head, newNextDirectory)
+        }
       }
     }
 

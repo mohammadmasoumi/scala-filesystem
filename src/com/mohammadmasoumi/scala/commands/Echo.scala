@@ -62,7 +62,7 @@ class Echo(args: Array[String]) extends Command {
     if (filename.contains(Directory.SEPARATOR))
       state.setMessage("filename must not contain separators!")
     else {
-      val newRoot: Directory = ???
+      val newRoot: Directory = getRootAfterEcho(state.root, state.wd.getAllFoldersInPath :+ filename, contents, append)
       if (newRoot == state.root)
         state.setMessage(filename + ": no such file")
       else

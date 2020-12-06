@@ -2,6 +2,8 @@ package com.mohammadmasoumi.scala.commands
 
 import com.mohammadmasoumi.scala.filesystem.State
 
+import scala.annotation.tailrec
+
 class Echo(args: Array[String]) extends Command {
   override def apply(state: State): State = {
     /*
@@ -38,12 +40,14 @@ class Echo(args: Array[String]) extends Command {
 
   def doEcho(state: State, contents: String, filename: String, append: Boolean): State = ???
 
-  ?
 
   // topIndex - NON-INCLUSIVE
   def createContent(args: Array[String], topIndex: Int): String = {
+    @tailrec
+    def createContentHelper(currentIndex: Int, accumulator: String = ""): String =
+      if (currentIndex > topIndex) accumulator
+      else createContentHelper(currentIndex + 1, accumulator + " " + args(currentIndex))
 
+    createContentHelper(0)
   }
-
-
 }

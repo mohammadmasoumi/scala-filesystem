@@ -5,11 +5,7 @@ import com.mohammadmasoumi.scala.filesystem.State
 /*
   Transform an state to another state
  */
-trait Command {
-
-  def apply(state: State): State
-
-}
+trait Command extends (State => State)
 
 object Command {
 

@@ -12,15 +12,14 @@ class Directory(override val parentPath: String, override val name: String, val 
 
   def removeEntry(entryName: String): Directory =
     if (!hasEntry(entryName)) this
-    else new Directory(parentPath, name, contents.filter(x => !x.name.equals(entryName)))
+    else new Directory(parentPath, name, contents.filter(!_.name.equals(entryName)))
 
   def findEntry(entryName: String): DirEntry = {
     @tailrec
-    def findEntryHelper(name: String, contentList: List[DirEntry]): DirEntry = {
+    def findEntryHelper(name: String, contentList: List[DirEntry]): DirEntry =
       if (contentList.isEmpty) null
       else if (contentList.head.name.equals(name)) contentList.head
       else findEntryHelper(name, contentList.tail)
-    }
 
     findEntryHelper(entryName, contents)
   }
@@ -29,7 +28,7 @@ class Directory(override val parentPath: String, override val name: String, val 
     findEntry(name) != null
 
   def replaceEntry(entryName: String, newEntry: DirEntry): Directory =
-    new Directory(parentPath, name, contents.filter(e => !e.name.equals(entryName)) :+ newEntry)
+    new Directory(parentPath, name, contents.filter(!_.name.equals(entryName)) :+ newEntry)
 
   def isRoot: Boolean = parentPath.isEmpty
 

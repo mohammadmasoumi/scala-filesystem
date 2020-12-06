@@ -54,7 +54,7 @@ object Command {
         else new Rm(tokens(1))
       case CAT =>
         if (tokens.length < 2) incompleteCommand(CAT)
-        else new Cat(tokens(0))
+        else new Cat(tokens(1))
       case ECHO =>
         if (tokens.length < 2) incompleteCommand(ECHO)
         else new Echo(tokens.tail)

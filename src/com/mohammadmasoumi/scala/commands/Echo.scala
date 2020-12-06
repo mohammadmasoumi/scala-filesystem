@@ -44,7 +44,7 @@ class Echo(args: Array[String]) extends Command {
   def createContent(args: Array[String], topIndex: Int): String = {
     @tailrec
     def createContentHelper(currentIndex: Int, accumulator: String = ""): String =
-      if (currentIndex > topIndex) accumulator
+      if (currentIndex >= topIndex) accumulator
       else createContentHelper(currentIndex + 1, accumulator + " " + args(currentIndex))
 
     createContentHelper(0)

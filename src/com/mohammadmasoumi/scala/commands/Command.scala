@@ -19,8 +19,8 @@ object Command {
   val TOUCH = "touch"
   val CD = "cd"
   val RM = "rm"
-  val CAT = "cat"
   val ECHO = "echo"
+  val CAT = "cat"
 
   def emptyCommand: Command = new Command { // anonymous class
     override def apply(state: State): State = state
@@ -52,6 +52,9 @@ object Command {
       case RM =>
         if (tokens.length < 2) incompleteCommand(RM)
         else new Rm(tokens(1))
+      case CAT =>
+        if (tokens.length < 2) incompleteCommand(CAT)
+        else new Cat(tokens(0))
       case ECHO =>
         if (tokens.length < 2) incompleteCommand(ECHO)
         else new Echo(tokens.tail)

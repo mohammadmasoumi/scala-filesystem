@@ -27,10 +27,18 @@ class Echo(args: Array[String]) extends Command {
       val filename = args(args.length - 1)
       val contents = createContent(args, args.length - 2)
 
-
+      if (">>".equals(operator))
+        doEcho(state, contents, filename, append = true)
+      else if (">".equals(operator))
+        doEcho(state, contents, filename, append = false)
+      else
+        state.setMessage(createContent(args, args.length))
     }
   }
 
+  def doEcho(state: State, contents: String, filename: String, append: Boolean): State = ???
+
+  ?
 
   // topIndex - NON-INCLUSIVE
   def createContent(args: Array[String], topIndex: Int): String = {

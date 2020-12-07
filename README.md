@@ -7,7 +7,8 @@ The main purpose of this project is to practice what I've learned.
 ## supported commands
 
  - [**Cat**][2]
-
+ - [**Cd**][3]
+ 
 
 ### Environment
  - JDK 1.8.0
@@ -22,3 +23,4 @@ The main purpose of this project is to practice what I've learned.
 
 [1]: https://www.udemy.com/course/rock-the-jvm-scala-for-beginners/learn/lecture/7660552#overview
 [2]: https://github.com/mohammadmasoumi/scala-filesystem/blob/main/src/com/mohammadmasoumi/scala/commands/Cat.scala
+[3]: https://github.com/mohammadmasoumi/scala-filesystem/blob/main/src/com/mohammadmasoumi/scala/commands/Cd.scala

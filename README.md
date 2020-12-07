@@ -10,7 +10,7 @@ The main purpose of this project is to practice what I've learned.
  - [**Cd**][3]
  - [**Echo**][4]
  - [**Ls**][5]
- - [**Mkdri**][6]
+ - [**Mkdir**][6]
  
 
 ### Environment

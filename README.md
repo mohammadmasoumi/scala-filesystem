@@ -13,6 +13,7 @@ The main purpose of this project is to practice what I've learned.
  - [**mkdir**][6]
  - [**pwd**][7]
  - [**rm**][8]
+ - [**touch**][9]
  
 
 ### Environment
@@ -34,6 +35,7 @@ The main purpose of this project is to practice what I've learned.
 [6]: https://github.com/mohammadmasoumi/scala-filesystem/blob/main/src/com/mohammadmasoumi/scala/commands/Mkdir.scala
 [7]: https://github.com/mohammadmasoumi/scala-filesystem/blob/main/src/com/mohammadmasoumi/scala/commands/Pwd.scala
 [8]: https://github.com/mohammadmasoumi/scala-filesystem/blob/main/src/com/mohammadmasoumi/scala/commands/Rm.scala
+[9]: https://github.com/mohammadmasoumi/scala-filesystem/blob/main/src/com/mohammadmasoumi/scala/commands/Touch.scala
 
 
 

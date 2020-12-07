@@ -8,6 +8,7 @@ The main purpose of this project is to practice what I've learned.
 
  - [**Cat**][2]
  - [**Cd**][3]
+ - [**Echo**][4]
  
 
 ### Environment
@@ -24,3 +25,8 @@ The main purpose of this project is to practice what I've learned.
 [1]: https://www.udemy.com/course/rock-the-jvm-scala-for-beginners/learn/lecture/7660552#overview
 [2]: https://github.com/mohammadmasoumi/scala-filesystem/blob/main/src/com/mohammadmasoumi/scala/commands/Cat.scala
 [3]: https://github.com/mohammadmasoumi/scala-filesystem/blob/main/src/com/mohammadmasoumi/scala/commands/Cd.scala
+[4]: https://github.com/mohammadmasoumi/scala-filesystem/blob/main/src/com/mohammadmasoumi/scala/commands/Echo.scala
+
+
+
+
